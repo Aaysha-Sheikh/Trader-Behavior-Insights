@@ -42,13 +42,37 @@ ds_aaysha_sheikh/
 ## 🚀 How to Run
 1. Open the notebooks in **Google Colab**:
    - `notebook_1.ipynb` → data setup, cleaning, merge  
-   - `notebook_2.ipynb` → EDA, sentiment alignment, plots, stats tests  
 
 2. Ensure the folder structure is preserved (`csv_files/`, `outputs/`).
 
 3. All outputs (tables & plots) are saved automatically.
 
 ---
+
+
+## 🔗 Open in Colab
+- Notebook - (https://colab.research.google.com/drive/1pP_428wu15S2e1JDmQCah8IzBim1vSbr?usp=sharing) 
+
+
+---
+
+## 🛠️ Reproducibility
+At the top of **`notebook_1.ipynb`**, add this cell to ensure the folder structure is always created:
+
+```python
+# --- Reproducibility setup ---
+import os
+
+CANDIDATE_NAME = "aaysha_sheikh"
+ROOT = f"/content/ds_{CANDIDATE_NAME}"
+CSV  = f"{ROOT}/csv_files"
+OUT  = f"{ROOT}/outputs"
+
+os.makedirs(CSV, exist_ok=True)
+os.makedirs(OUT, exist_ok=True)
+
+print("Project root set to:", ROOT)
+```
 
 ## 📊 Key Metrics
 - **Profitability**: total/avg PnL, win rate  
@@ -60,10 +84,11 @@ ds_aaysha_sheikh/
 ---
 
 ## ⚠️ Limitations
-- No overlapping time periods between sentiment & trades (sentiment appears as “Unknown” in this dataset).  
-- On overlapping data, this framework would validate if trading performance differs between Fear vs Greed.  
-- Statistical testing framework (t-test / Mann–Whitney) included for use when overlap exists.  
 
+- The provided trader dataset and Fear & Greed dataset do not overlap in time.
+- As a result, trades appear with classification = Unknown.
+- The framework (cleaning, merging, sentiment simplification, summaries, plots, statistical tests) is fully implemented and will produce meaningful insights when applied to overlapping real-time data.
+ 
 ---
 
 ## ✍️ Author
